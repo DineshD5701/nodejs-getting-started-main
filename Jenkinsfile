@@ -2,13 +2,20 @@ pipeline {
     agent any
 
     tools {
-        nodejs "NodeJS" // defined under Jenkins -> Global Tool Configuration
+        nodejs "NodeJS" // Must match name in Global Tool Configuration
     }
 
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/DineshD5701/nodejs-getting-started-main'
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: '*/main']],
+                    userRemoteConfigs: [[
+                        url: 'https://github.com/DineshD5701/nodejs-getting-started-main.git',
+                        credentialsId: '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' 
+                    ]]
+                ])
             }
         }
 
@@ -26,7 +33,7 @@ pipeline {
 
         stage('Archive Test Reports') {
             steps {
-                junit 'test-results/*.xml' // Assuming mocha or similar output
+                junit 'test-results/*.xml' // optional, only if your tests generate JUnit reports
             }
         }
     }
@@ -43,4 +50,3 @@ pipeline {
         }
     }
 }
-
