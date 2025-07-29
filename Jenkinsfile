@@ -13,7 +13,7 @@ pipeline {
                     branches: [[name: '*/main']],
                     userRemoteConfigs: [[
                         url: 'https://github.com/DineshD5701/nodejs-getting-started-main.git',
-                        credentialsId: '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' 
+                        credentialsId: 'github-token' 
                     ]]
                 ])
             }
