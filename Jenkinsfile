@@ -20,10 +20,12 @@ pipeline {
         }
 
         stage('Install Dependencies') {
-            steps {
-                sh 'npm install'
+        steps {
+        sh 'npm install'
+        sh 'npm install -g mocha'  // ❗ Avoid unless absolutely needed
             }
         }
+
 
         stage('Run Tests') {
             steps {
