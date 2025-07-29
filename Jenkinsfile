@@ -33,9 +33,10 @@ pipeline {
 
         stage('Archive Test Reports') {
             steps {
-                junit 'test-results/*.xml' // optional, only if your tests generate JUnit reports
+                junit 'test-results/results.xml'
             }
         }
+
     }
 
     post {
