@@ -12,7 +12,7 @@ pipeline {
                     $class: 'GitSCM',
                     branches: [[name: '*/main']],
                     userRemoteConfigs: [[
-                        url: 'https://github.com/DineshD5701/nodejs-getting-started-main.git',
+                        url: 'https://github.com/DineshD5701/nodejs-getting-started-main.git', //
                         credentialsId: 'github-token' 
                     ]]
                 ])
