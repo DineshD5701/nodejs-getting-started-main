@@ -5,20 +5,6 @@ pipeline {
         nodejs "NodeJS" // Must match name in Global Tool Configuration
     }
 
-    stages {
-        stage('Clone Repository') {
-            steps {
-                checkout([
-                    $class: 'GitSCM',
-                    branches: [[name: '*/main']],
-                    userRemoteConfigs: [[
-                        url: 'https://github.com/DineshD5701/nodejs-getting-started-main', //
-                        credentialsId: 'github-token' 
-                    ]]
-                ])
-            }
-        }
-
         stage('Install Dependencies') {
         steps {
         sh 'npm install'
